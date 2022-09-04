@@ -1,0 +1,104 @@
+﻿@model IEnumerable<YouTubeServices.ViewModels.YoutubeVideos>
+@using YouTubeServices.ApplicationReferences
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="mainDiv" style="display:none">
+    <div class="text-center centered">
+        <h1 class="display-3"><b><strong>W</strong>elcome</b> <b><strong>B</strong>ack</b></h1>
+        <h5>@References.Currentdatatime.ToString("dddd, MMMM dd yyyy")</h5>
+        <img src="@References.ApplicationPageLogo" class="img-fluid" style="border-radius:10%;width:20%;height:20%" />
+    
+        <div class="mt-5">
+            <strong>
+                <label class="control-label mt-2">What do you like to Search</label>
+            </strong>    
+                <input id="searchkeyword" class="form-control"/>
+                <button id="searchbutton" class="btn btn-success mt-3" style="font-size:20px" disabled onclick="calcstat()">Search</button>
+        </div>
+        <div class="mt-5">
+            <strong>
+                <label id="errormessage" class="control-label bg-danger text-white"></label>
+                <label id="successmessage" class="control-label bg-success text-white"></label>
+            </strong>    
+                
+        </div>
+    </div>
+
+
+    <div id="itemscard" class="row content demo">
+        @*Cards*@
+
+    </div>
+
+        
+</div>
+@section scripts{
+    <script>$(document).ready(function () {
+            $("#mainDiv").fadeIn(2000);
+            $('#searchkeyword').focus();
+
+        });
+
+        //function to make sure user input is exist
+        $(function() { 
+              $("#searchkeyword").on("keydown keyup change click", function(){
+                var value = $(this).val();
+                  if (value.length > 1) {
+                    $('#searchbutton').removeAttr("disabled");
+                  }
+                  else {
+                    $("#errormessage").show();
+                    $('#searchbutton').attr("disabled","disabled");
+                  }
+            });
+        });
+
+        //function to init a youtube call
+        function calcstat() {
+            $('#itemscard').empty();
+
+            $('#errormessage').hide();
+            $('#successmessage').hide();
+
+            $.ajax({
+                type: 'POST',
+                url: '/Home/YoutubeEndpointCall/',
+                data: { keywords: $('#searchkeyword').val() },
+                dataType: 'JSON',
+                success: function(response) {
+                    if (response.status) {
+                        $('#successmessage').show();
+                        //to show how many retrieved videos
+                        $('#successmessage').text(response.responseText + " retrieve " + response.allvideos.length +" Videos");
+                        
+                        //looping in the retrieved videos
+                        $.each(response.allvideos, function(index, element) {
+                            console.log(element.title);
+                            $("#itemscard").append(`<div class="card m-1 card-hghlght demo-card" style="width:350px;">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Title :</strong>`+element.title+`</h5>
+                    <h6 class="card-subtitle mb-2">Description : `+element.description+`</h6>
+                    <p class="card-text"><strong>published :</strong> `+element.publishedAt+`</p>
+                    <a href="https://www.youtube.com/watch?v=`+element.videoId+`" target="_blank">
+                    <img src="`+element.thumbnail+`" width="300" height="300" alt="Release picture" />
+                    </a>
+                </div>
+            </div>`);
+                        });
+                    } else {
+                        $('#errormessage').show();
+                        $('#errormessage').text(response.responseText);
+                    }
+                },
+                error: function(response) {
+                    
+                    $('#errormessage').text("Error");
+                }
+            });
+        }
+
+
+    </script>
+}

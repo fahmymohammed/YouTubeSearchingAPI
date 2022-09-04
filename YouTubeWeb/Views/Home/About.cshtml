@@ -1,0 +1,45 @@
+﻿@using YouTubeServices.ApplicationReferences
+@*Main*@
+
+@{
+    ViewData["Title"] = "About";
+}
+
+<div id="mainDiv" class="container p-3 border my-5" style="display:none;font-size:12px">
+
+    <div class="mx-5">
+
+        <div class="row pt-4">
+            <div class="col-6 pt-1">
+                <h2 class="font-weight-bolder" style="color:deepskyblue">Welcome...</h2>
+            </div>
+        </div>
+        
+        <div class="centered text-center">
+            <img src="~/images/USA.png" class="img-fluid" style="border-radius:10%;width:25%;height:25%" />
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+     <script>
+        $(document).ready(function () {
+            $("#mainDiv").fadeIn(1000);
+
+
+            var msg = new SpeechSynthesisUtterance();
+            var voices = window.speechSynthesis.getVoices();
+            msg.voice = voices[10]; 
+            msg.volume = 1;
+            msg.rate = 1;
+            msg.pitch = 2;
+            msg.text = "Welcome to YouTube Search Application, Developed By Fahmy Hassan";
+            msg.lang = 'es';
+            speechSynthesis.speak(msg);
+
+        });
+
+        
+    </script>
+}

@@ -1,0 +1,12 @@
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\bin\Debug\net6.0\YouTubeServices.deps.json
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\bin\Debug\net6.0\YouTubeServices.dll
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\bin\Debug\net6.0\YouTubeServices.pdb
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\YouTubeServices.csproj.AssemblyReference.cache
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\YouTubeServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\YouTubeServices.AssemblyInfoInputs.cache
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\YouTubeServices.AssemblyInfo.cs
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\YouTubeServices.csproj.CoreCompileInputs.cache
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\YouTubeServices.dll
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\refint\YouTubeServices.dll
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\YouTubeServices.pdb
+C:\Work\CSharpWork\Microsoft\YouTubeSearching\YouTubeServices\obj\Debug\net6.0\ref\YouTubeServices.dll

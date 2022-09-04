@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "rAsDENpsDSgXyjiw8OPUJ/qTSkbziWx5WNv6+F12Y/wC/XG3yJDlkrxJYpvQYzaHEfdOFPNSXE7t6GiIvO184w==",
+  "success": true,
+  "projectFilePath": "C:\\Work\\CSharpWork\\Microsoft\\YouTubeSearching\\YouTubeServices\\YouTubeServices.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Fahmy\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Fahmy\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\Fahmy\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

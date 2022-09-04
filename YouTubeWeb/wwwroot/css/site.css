@@ -1,0 +1,64 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: center;
+  min-height: 100%;
+}
+
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ===== FOR DEMO ===== */
+.demo {
+    height: 170vh;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.demo-card {
+    background: linear-gradient(132deg, rgb(68, 65, 65) 5%, rgb(108, 104, 104) 7%, rgb(195, 188, 188) 50%);
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px -15px rgba(0,0,0,0.62);
+    height: 550px;
+    width: 500px;
+}
+/* ===== FOR DEMO ===== */
+
+/* ===== MAIN CODE ===== */
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    pointer-events: none;
+    transition: all 0.4s;
+}
+
+.card-hghlght {
+    pointer-events: auto;
+    transform: scale(1);
+    transition: all 0.4s;
+}
+
+    .card-hghlght:hover {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+
+.content:hover .card-hghlght:not(:hover) {
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+/* ===== MAIN CODE ===== */
