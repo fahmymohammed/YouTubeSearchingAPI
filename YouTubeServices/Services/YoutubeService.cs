@@ -56,14 +56,14 @@ namespace YouTubeServices.Services
                 if (responseOBJ?.items.Count() > 0)
                 {
                     //Populate the Data
-                    var callresult = responseOBJ.items.Select(async y => new YoutubeVideos
+                    var callresult = responseOBJ.items.Select(y => new YoutubeVideos
                     {
                         Title = y.snippet.title,
                         Description = y.snippet.description,
                         VideoId = y.id.videoId,
                         PublishedAt = y.snippet.publishedAt,
                         Thumbnail = y.snippet.thumbnails.high.url,
-                        Tags = await Task.FromResult(GetYouTubeVideosTags(y.id.videoId).Result.ToList()),
+                        //Tags = await Task.FromResult(GetYouTubeVideosTags(y.id.videoId).Result.ToList()),
                     });
 
                     return (callresult, true, "successfuly");
