@@ -1,21 +1,18 @@
-﻿using FakeItEasy;
-using Xunit;
+﻿using Xunit;
 
 namespace YouTubeServices.Services.Tests
 {
 
-    [TestClass()]
     public class YoutubeServiceTests
     {
         private readonly IYoutubeService _sut;
 
         public YoutubeServiceTests(IYoutubeService sut)
         {
-            _sut = A.Fake<IYoutubeService>();
+            _sut = sut;
         }
 
         [Fact(DisplayName = "GetYouTubeVideosTest", Skip = "Something Wrong with This Unit Test")]
-        [TestMethod()]
         public void GetYouTubeVideosTest()
         {
             //Arrange
@@ -25,10 +22,11 @@ namespace YouTubeServices.Services.Tests
             //ACT
 
             //Assert
-            Assert.IsTrue(youtubeVideos.Count() == 5);
+            Assert.IsTrue(youtubeVideos.Count() == 6);
             Assert.IsTrue(youtubeVideosTitle);
 
 
         }
+
     }
 }
