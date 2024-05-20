@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using YouTubeServices.Validation;
 using YouTubeServices.ViewModels;
 
@@ -14,7 +9,6 @@ namespace YouTubeServices.Services
     {
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
-        var applicationyoutubeBaseUrl = _configuration["Youtubesearch:YouTubeBaseUrl"];
         private readonly IValidation _validation;
 
         public YoutubeService(HttpClient httpClient, IConfiguration configuration, IValidation validation)
@@ -34,17 +28,17 @@ namespace YouTubeServices.Services
             //Preparing for youtube call
             //it can be one line or even inline directly with GetAsync function
             //can stored in appsettings.json or in the Program.cs services section
-            
+
             var applicationyoutubeBaseUrl = _configuration["Youtubesearch:YouTubeBaseUrl"];
             var applicationyoutubekey = _configuration["Youtubesearch:Key"];
 
             if (_validation.ValidationForNull(applicationyoutubeBaseUrl))
                 return (new List<YoutubeVideos>(), false, "Error fetching data...");
-            
+
             if (_validation.ValidationForNull(applicationyoutubekey))
                 return (new List<YoutubeVideos>(), false, "Error fetching data...");
 
-            
+
 
             var youtubefullUrl = $"{applicationyoutubeBaseUrl}&q={keywords}&key={applicationyoutubekey}";
 
@@ -53,11 +47,11 @@ namespace YouTubeServices.Services
             try
             {
                 clientResponse.EnsureSuccessStatusCode();
-                
+
                 //call the Deserialize the Json Object To c#
                 using var responseReadStream = await clientResponse.Content.ReadAsStreamAsync();
                 var responseOBJ = await JsonSerializer.DeserializeAsync<YoutubeVideosResponse>(responseReadStream);
-               
+
                 //Validate the Result
                 if (responseOBJ?.items.Count() > 0)
                 {
@@ -69,17 +63,17 @@ namespace YouTubeServices.Services
                         VideoId = y.id.videoId,
                         PublishedAt = y.snippet.publishedAt,
                         Thumbnail = y.snippet.thumbnails.high.url,
-                        Tags = await Task.FromResult( GetYouTubeVideosTags(y.id.videoId).Result.ToList()),
+                        Tags = await Task.FromResult(GetYouTubeVideosTags(y.id.videoId).Result.ToList()),
                     });
-                    
+
                     return (callresult, true, "successfuly");
                 }
-                    
-                return (new List<YoutubeVideos>(), false,"No matching videos...");
+
+                return (new List<YoutubeVideos>(), false, "No matching videos...");
             }
             catch (HttpRequestException)
             {
-                return (new List<YoutubeVideos>() , false, "Error fetching data...");
+                return (new List<YoutubeVideos>(), false, "Error fetching data...");
             }
 
         }
@@ -101,7 +95,7 @@ namespace YouTubeServices.Services
 
 
             var youtubefullUrl = $"{applicationyoutubeBaseUrl}&key={applicationyoutubekey}&id={videoid}";
-        
+
             //call the endpoit
             var clientResponse = await _httpClient.GetAsync(youtubefullUrl);
             try
