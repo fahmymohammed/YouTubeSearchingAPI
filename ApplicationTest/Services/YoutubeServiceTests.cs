@@ -22,7 +22,7 @@ namespace YouTubeServices.Services.Tests
             //ACT
 
             //Assert
-            Assert.IsTrue(youtubeVideos.Count() == 6);
+            Assert.IsTrue(youtubeVideos.Count == 6);
             Assert.IsTrue(youtubeVideosTitle);
 
 
